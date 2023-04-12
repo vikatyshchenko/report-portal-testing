@@ -14,6 +14,10 @@ import static com.report.portal.core.utils.data.ResourceUtils.getFile;
 
 public class DataReader {
 
+    private DataReader() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Properties readPropertiesFile(String fileName) {
         Log.debug("Loading properties from '%s' file...", fileName);
         InputStream input = readFile(getFile(fileName));

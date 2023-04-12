@@ -1,7 +1,5 @@
 import com.report.portal.business.MyClass;
-import com.report.portal.core.logging.TestListener;
 import io.qameta.allure.Description;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -15,7 +13,7 @@ public class TestClass {
 
         String result = myClass.concatenate("one", "two");
 
-        assertEquals("onetwo", result);
+        assertEquals(result, "onetwo");
 
     }
 

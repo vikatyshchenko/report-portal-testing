@@ -13,6 +13,14 @@ plugins {
     id("java")
     id("io.qameta.allure") version "2.10.0"
     id("io.freefair.lombok") version "8.0.1"
+    id("org.sonarqube") version "4.0.0.2929"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "report-portal-testing")
+        property("sonar.projectName", "report-portal-testing")
+    }
 }
 
 buildscript {

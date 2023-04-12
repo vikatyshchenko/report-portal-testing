@@ -7,6 +7,10 @@ import java.util.Objects;
 
 public class ResourceUtils {
 
+    private ResourceUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String getFilePath(String fileName) {
         String filePath = Thread.currentThread().getContextClassLoader().getResource(fileName).getPath();
         if (Objects.isNull(filePath)) {
