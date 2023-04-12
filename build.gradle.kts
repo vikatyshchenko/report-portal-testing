@@ -92,7 +92,7 @@ tasks.test {
             }
     ))
 
-    finalizedBy("allureReport", "allureServe")
+    finalizedBy("allureReport")
 }
 
 fun printResults(allResults: List<String>) {
