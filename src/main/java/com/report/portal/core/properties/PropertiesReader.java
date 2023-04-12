@@ -6,7 +6,7 @@ import java.util.Properties;
 
 import static com.report.portal.core.utils.data.DataReader.readPropertiesFile;
 
-public class ReportPortalProperties {
+public class PropertiesReader {
 
     private static final Properties prop;
 
