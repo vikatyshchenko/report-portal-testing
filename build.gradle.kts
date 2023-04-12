@@ -45,7 +45,9 @@ dependencies {
     implementation("org.testng:testng:7.7.0")
     implementation("org.apache.logging.log4j:log4j-api:$log4jVersion")
     implementation("org.apache.logging.log4j:log4j-core:$log4jVersion")
-    implementation("io.qameta.allure:allure-testng:${allure.version}")
+    testImplementation("org.slf4j:slf4j-log4j12:2.0.7")
+    testImplementation("org.slf4j:slf4j-simple:2.0.7")
+    implementation("io.qameta.allure:allure-testng:2.21.0")
     implementation("com.epam.reportportal:client-java:$rpJavaClientVersion")
     implementation("com.epam.reportportal:agent-java-testng:$rpTestNGVersion")
     implementation("com.epam.reportportal:logger-java-log4j:$rpLog4jVersion")
@@ -53,9 +55,9 @@ dependencies {
 }
 
 allure {
-    version.value("2.10.0")
+    version.value("2.21.0")
     report {
-        reportDir.set(project.reporting.baseDirectory.dir("allure-report"))
+        reportDir.set(project.reporting.baseDirectory.dir("report-portal-testing/build/allure/reports/allure-report"))
     }
 }
 
@@ -98,7 +100,6 @@ fun printResults(allResults: List<String>) {
 
     println("└${"─".repeat(maxLength)}┘")
 }
-
 
 
 
