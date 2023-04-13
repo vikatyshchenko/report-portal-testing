@@ -5,4 +5,5 @@ public class MyClass {
         public String concatenate(String one, String two){
             return one + two;
         }
+
 }

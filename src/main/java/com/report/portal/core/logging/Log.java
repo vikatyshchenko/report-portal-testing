@@ -6,7 +6,12 @@ import org.apache.logging.log4j.Logger;
 import org.testng.Reporter;
 
 public class Log {
+
     private static final int CALLED_CLASS_STACK_TRACE_POSITION = 4;
+
+    private Log() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void debug(String message, Object... params) {
         getLogger().debug(String.format(message, params));
@@ -43,4 +48,5 @@ public class Log {
     static Logger getLogger() {
         return LogManager.getLogger(Thread.currentThread().getStackTrace()[CALLED_CLASS_STACK_TRACE_POSITION].getClassName());
     }
+
 }

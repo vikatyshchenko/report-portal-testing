@@ -14,7 +14,6 @@ public class TestClass {
         String result = myClass.concatenate("one", "two");
 
         assertEquals(result, "onetwo");
-
     }
 
 }
