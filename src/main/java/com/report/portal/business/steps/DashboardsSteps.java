@@ -3,21 +3,21 @@ package com.report.portal.business.steps;
 import com.report.portal.business.constants.WidgetType;
 import com.report.portal.business.page.objects.AllDashboardsPage;
 import com.report.portal.business.page.objects.DashboardPage;
-import lombok.Getter;
-import lombok.Setter;
 
 import static com.report.portal.business.constants.StepLabel.*;
 
-@Getter
-@Setter
 public class DashboardsSteps {
 
     private AllDashboardsPage allDashboardsPage = AllDashboardsPage.init();
     private DashboardPage dashboardPage = DashboardPage.init();
-    private String widgetName;
 
     public static DashboardsSteps init() {
         return new DashboardsSteps();
+    }
+
+    public static String createWidgetName(WidgetType widgetType, int randomValue) {
+        return widgetType.getWidgetTitle().concat("_" + randomValue);
+
     }
 
     public DashboardsSteps selectDashboard(String dashboardName) {
@@ -45,8 +45,7 @@ public class DashboardsSteps {
         return this;
     }
 
-    public DashboardsSteps describeWidget(WidgetType widgetType, int randomValue) {
-        widgetName = widgetType.getWidgetTitle().concat("_" + randomValue);
+    public DashboardsSteps describeWidget(String widgetName) {
         dashboardPage.isStepLabelActive(SAVE)
                 .typeWidgetName(widgetName)
                 .typeWidgetDescription("Description: " + widgetName);
@@ -58,24 +57,23 @@ public class DashboardsSteps {
         return this;
     }
 
-    public DashboardsSteps assertWidgetVisible(WidgetType widgetType) {
+    public DashboardsSteps assertWidgetVisible(String widgetName, WidgetType widgetType) {
         dashboardPage.isWidgetVisible(widgetName, widgetType);
         return this;
     }
 
-    public DashboardsSteps deleteWidget() {
+    public DashboardsSteps deleteWidget(String widgetName) {
         dashboardPage.hoverWidgetHeader(widgetName)
                 .pressDeleteWidgetHeaderButton(widgetName)
                 .pressDeleteWidgetButton();
         return this;
     }
 
-    public DashboardsSteps editWidgetName(String newWidgetName) {
-        dashboardPage.hoverWidgetHeader(widgetName)
-                .pressEditWidgetHeaderButton(widgetName)
+    public DashboardsSteps editWidgetName(String oldWidgetName, String newWidgetName) {
+        dashboardPage.hoverWidgetHeader(oldWidgetName)
+                .pressEditWidgetHeaderButton(oldWidgetName)
                 .typeWidgetName(newWidgetName)
                 .pressSaveButton();
-        widgetName = newWidgetName;
         return this;
     }
 

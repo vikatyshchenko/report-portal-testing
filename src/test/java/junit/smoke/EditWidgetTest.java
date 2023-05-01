@@ -36,21 +36,19 @@ class EditWidgetTest extends BaseTest {
 
     @ParameterizedTest()
     @MethodSource("getWidgetName")
-    @Description("Create widget test")
+    @Description("Edit widget name test")
     void editWidgetNameTest(String widgetName) {
-        dashboardsSteps.setWidgetName(DEFAULT_WIDGET_NAME);
         dashboardsSteps
-                .editWidgetName(widgetName)
-                .assertWidgetVisible(LAUNCH_STAT)
-                .editWidgetName(DEFAULT_WIDGET_NAME)
-                .assertWidgetVisible(LAUNCH_STAT);
+                .editWidgetName(DEFAULT_WIDGET_NAME, widgetName)
+                .assertWidgetVisible(widgetName, LAUNCH_STAT)
+                .editWidgetName(widgetName, DEFAULT_WIDGET_NAME)
+                .assertWidgetVisible(DEFAULT_WIDGET_NAME, LAUNCH_STAT);
     }
 
     @ParameterizedTest()
-    @Description("Create widget test")
+    @Description("Edit widget description test")
     @MethodSource("getWidgetDescription")
     void editWidgetDescriptionTest(String widgetDescription) {
-        dashboardsSteps.setWidgetName(DEFAULT_WIDGET_NAME);
         dashboardsSteps
                 .editWidgetDescription(DEFAULT_WIDGET_NAME, widgetDescription)
                 .assertWidgetDescriptionVisible(DEFAULT_WIDGET_NAME, widgetDescription)

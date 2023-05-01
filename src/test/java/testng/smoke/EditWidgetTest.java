@@ -10,8 +10,8 @@ import static com.report.portal.core.utils.data.RandomSequenceCreator.generateRa
 public class EditWidgetTest extends BaseTest {
 
     private final String DEFAULT_WIDGET_NAME = "LAUNCH STATISTICS AREA";
-    private final String RANDOM_WIDGET_NAME = generateRandomString(128);
-    private final String RANDOM_WIDGET_DESCRIPTION = generateRandomString(1500);
+    private static final String RANDOM_WIDGET_NAME = generateRandomString(128);
+    private static final String RANDOM_WIDGET_DESCRIPTION = generateRandomString(1500);
 
     @DataProvider(name = "widgetName")
     public Object[][] getWidgetName() {
@@ -34,20 +34,18 @@ public class EditWidgetTest extends BaseTest {
     }
 
     @Test(dataProvider = "widgetName")
-    @Description("Create widget test")
-    public void editWidgetNameTest(String widgetName) {
-        dashboardsSteps.setWidgetName(DEFAULT_WIDGET_NAME);
+    @Description("Edit widget name test")
+    void editWidgetNameTest(String widgetName) {
         dashboardsSteps
-                .editWidgetName(widgetName)
-                .assertWidgetVisible(LAUNCH_STAT)
-                .editWidgetName(DEFAULT_WIDGET_NAME)
-                .assertWidgetVisible(LAUNCH_STAT);
+                .editWidgetName(DEFAULT_WIDGET_NAME, widgetName)
+                .assertWidgetVisible(widgetName, LAUNCH_STAT)
+                .editWidgetName(widgetName, DEFAULT_WIDGET_NAME)
+                .assertWidgetVisible(DEFAULT_WIDGET_NAME, LAUNCH_STAT);
     }
 
     @Test(dataProvider = "widgetDescription")
-    @Description("Create widget test")
-    public void editWidgetDescriptionTest(String widgetDescription) {
-        dashboardsSteps.setWidgetName(DEFAULT_WIDGET_NAME);
+    @Description("Edit widget description test")
+    void editWidgetDescriptionTest(String widgetDescription) {
         dashboardsSteps
                 .editWidgetDescription(DEFAULT_WIDGET_NAME, widgetDescription)
                 .assertWidgetDescriptionVisible(DEFAULT_WIDGET_NAME, widgetDescription)

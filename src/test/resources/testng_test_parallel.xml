@@ -5,6 +5,7 @@
         <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
     </listeners>
 
+    <!--The tests are structured for methods to be executed in parallel, but data provider to be executed consequently-->
     <test name="editWidgetNameTest">
         <classes>
             <class name="testng.smoke.EditWidgetTest">

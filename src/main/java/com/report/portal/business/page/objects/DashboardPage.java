@@ -11,9 +11,9 @@ import static java.lang.String.format;
 
 public class DashboardPage extends BasePage {
 
-    private final static String widgetHeaderXpath = "//div[@class='widgetHeader__widget-name--FjJLi']//div[text()='%s']";
+    private static final String widgetHeaderXpath = "//div[@class='widgetHeader__widget-name--FjJLi']//div[text()='%s']";
     private final String widgetTypeHeaderXpath = widgetHeaderXpath.concat("/parent::div/following-sibling::div/span[text()='%s']");
-    private final static String widgetControlXpath = "//div[text()='%s']/ancestor::div[@class='widgetHeader__info-block--1n0yX']" +
+    private static final String widgetControlXpath = "//div[text()='%s']/ancestor::div[@class='widgetHeader__info-block--1n0yX']" +
             "/following-sibling::div[@class='widget__common-control--2ajOp']/div/div[%d]";
 
     private final String widgetDescriptionTooltipXpath = widgetHeaderXpath.concat("/parent::div//div[@class='descriptionTooltipIcon__description-tooltip-icon--2N2NQ']");
@@ -71,7 +71,7 @@ public class DashboardPage extends BasePage {
 
     public DashboardPage isWidgetVisible(String widgetName, WidgetType widgetType) {
         String xpath = format(widgetTypeHeaderXpath, widgetName, widgetType.getWidgetTitle());
-        $(By.xpath(xpath)).shouldBe(visible);
+        $(By.xpath(xpath)).scrollIntoView(true).shouldBe(visible);
         return this;
     }
 

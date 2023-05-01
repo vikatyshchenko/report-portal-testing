@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.report.portal.business.constants.WidgetType.*;
+import static com.report.portal.business.steps.DashboardsSteps.createWidgetName;
 import static com.report.portal.core.utils.data.RandomSequenceCreator.generateRandomInt;
 
 public class AddNewWidgetTest {
@@ -48,15 +49,16 @@ public class AddNewWidgetTest {
 
     @Test(dataProvider = "widgetType")
     @Description("Create widget test")
-    public void createWidgetTest(WidgetType widgetType) {
+    void createWidgetTest(WidgetType widgetType) {
+        String widgetName = createWidgetName(widgetType, randomValue);
         dashboardsSteps
                 .addNewWidget()
                 .chooseWidgetType(widgetType)
                 .configureWidget(FILTER_NAME, widgetType)
-                .describeWidget(widgetType, randomValue)
+                .describeWidget(widgetName)
                 .createWidget()
-                .assertWidgetVisible(widgetType)
-                .deleteWidget();
+                .assertWidgetVisible(widgetName, widgetType)
+                .deleteWidget(widgetName);
     }
 
 }

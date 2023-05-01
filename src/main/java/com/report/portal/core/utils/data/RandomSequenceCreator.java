@@ -2,7 +2,6 @@ package com.report.portal.core.utils.data;
 
 import java.security.SecureRandom;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomSequenceCreator {
 
@@ -12,8 +11,7 @@ public class RandomSequenceCreator {
     }
 
     public static int generateRandomInt(int from, int to) {
-        int randomInt = ThreadLocalRandom.current().nextInt(from, to);
-        return randomInt;
+        return new SecureRandom().nextInt(from, to);
     }
 
     public static String generateRandomString(int length) {
