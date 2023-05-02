@@ -12,7 +12,7 @@ public class BaseTest {
 
     protected static final String DASHBOARD_NAME = "DEMO DASHBOARD";
     protected static final String FILTER_NAME = "DEMO_FILTER";
-    protected final int randomValue = generateRandomInt(1000, 9999);
+    protected static final int RANDOM_VALUE = generateRandomInt(1000, 9999);
     static BaseSteps baseSteps = new BaseSteps();
     static DashboardsSteps dashboardsSteps;
 

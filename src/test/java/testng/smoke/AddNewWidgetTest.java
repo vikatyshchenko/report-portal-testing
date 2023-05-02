@@ -19,10 +19,10 @@ public class AddNewWidgetTest {
     BaseSteps baseSteps = new BaseSteps();
     DashboardsSteps dashboardsSteps;
 
-    protected final String DASHBOARD_NAME = "DEMO DASHBOARD";
-    protected final String FILTER_NAME = "DEMO_FILTER";
+    protected static final String DASHBOARD_NAME = "DEMO DASHBOARD";
+    protected static final String FILTER_NAME = "DEMO_FILTER";
 
-    protected final int randomValue = generateRandomInt(1000, 9999);
+    protected final int RANDOM_VALUE = generateRandomInt(1000, 9999);
 
     @DataProvider(name = "widgetType", parallel = true)
     public Object[][] getWidgetType() {
@@ -50,7 +50,7 @@ public class AddNewWidgetTest {
     @Test(dataProvider = "widgetType")
     @Description("Create widget test")
     void createWidgetTest(WidgetType widgetType) {
-        String widgetName = createWidgetName(widgetType, randomValue);
+        String widgetName = createWidgetName(widgetType, RANDOM_VALUE);
         dashboardsSteps
                 .addNewWidget()
                 .chooseWidgetType(widgetType)

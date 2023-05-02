@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
 
-    protected final String DASHBOARD_NAME = "DEMO DASHBOARD";
+    protected static final String DASHBOARD_NAME = "DEMO DASHBOARD";
     BaseSteps baseSteps = new BaseSteps();
     DashboardsSteps dashboardsSteps;
 

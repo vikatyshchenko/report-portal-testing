@@ -11,7 +11,7 @@ class AddNewWidgetTest extends BaseTest {
     @ParameterizedTest
     @EnumSource(WidgetType.class)
     void createWidgetTest(WidgetType widgetType) {
-        String widgetName = createWidgetName(widgetType, randomValue);
+        String widgetName = createWidgetName(widgetType, RANDOM_VALUE);
         dashboardsSteps
                 .addNewWidget()
                 .chooseWidgetType(widgetType)

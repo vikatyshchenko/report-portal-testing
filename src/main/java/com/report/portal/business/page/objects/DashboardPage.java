@@ -11,12 +11,12 @@ import static java.lang.String.format;
 
 public class DashboardPage extends BasePage {
 
-    private static final String widgetHeaderXpath = "//div[@class='widgetHeader__widget-name--FjJLi']//div[text()='%s']";
-    private final String widgetTypeHeaderXpath = widgetHeaderXpath.concat("/parent::div/following-sibling::div/span[text()='%s']");
-    private static final String widgetControlXpath = "//div[text()='%s']/ancestor::div[@class='widgetHeader__info-block--1n0yX']" +
+    private static final String WIDGET_HEADER_XPATH = "//div[@class='widgetHeader__widget-name--FjJLi']//div[text()='%s']";
+    private static final String WIDGET_TYPE_HEADER_XPATH = WIDGET_HEADER_XPATH.concat("/parent::div/following-sibling::div/span[text()='%s']");
+    private static final String WIDGET_CONTROL_XPATH = "//div[text()='%s']/ancestor::div[@class='widgetHeader__info-block--1n0yX']" +
             "/following-sibling::div[@class='widget__common-control--2ajOp']/div/div[%d]";
 
-    private final String widgetDescriptionTooltipXpath = widgetHeaderXpath.concat("/parent::div//div[@class='descriptionTooltipIcon__description-tooltip-icon--2N2NQ']");
+    private static final String WIDGET_DESC_TOOLTIP_XPATH = WIDGET_HEADER_XPATH.concat("/parent::div//div[@class='descriptionTooltipIcon__description-tooltip-icon--2N2NQ']");
 
     public static DashboardPage init() {
         return new DashboardPage();
@@ -70,43 +70,43 @@ public class DashboardPage extends BasePage {
     }
 
     public DashboardPage isWidgetVisible(String widgetName, WidgetType widgetType) {
-        String xpath = format(widgetTypeHeaderXpath, widgetName, widgetType.getWidgetTitle());
+        String xpath = format(WIDGET_TYPE_HEADER_XPATH, widgetName, widgetType.getWidgetTitle());
         $(By.xpath(xpath)).scrollIntoView(true).shouldBe(visible);
         return this;
     }
 
     public DashboardPage hoverWidgetHeader(String widgetName) {
-        String xpath = format(widgetHeaderXpath, widgetName);
+        String xpath = format(WIDGET_HEADER_XPATH, widgetName);
         $(By.xpath(xpath)).scrollIntoView(true).hover();
         return this;
     }
 
     public DashboardPage hoverWidgetDescription(String widgetName) {
-        String xpath = format(widgetDescriptionTooltipXpath, widgetName);
+        String xpath = format(WIDGET_DESC_TOOLTIP_XPATH, widgetName);
         $(By.xpath(xpath)).scrollIntoView(true).hover();
         return this;
     }
 
     public DashboardPage isWidgetDescriptionVisible(String widgetName, String widgetDescription) {
-        String xpath = format(widgetDescriptionTooltipXpath, widgetName);
+        String xpath = format(WIDGET_DESC_TOOLTIP_XPATH, widgetName);
         $(By.xpath(xpath)).shouldHave(attribute("content", widgetDescription));
         return this;
     }
 
     public DashboardPage isWidgetDescriptionInVisible(String widgetName) {
-        String xpath = format(widgetDescriptionTooltipXpath, widgetName);
+        String xpath = format(WIDGET_DESC_TOOLTIP_XPATH, widgetName);
         $(By.xpath(xpath)).shouldBe(hidden);
         return this;
     }
 
     public DashboardPage pressEditWidgetHeaderButton(String widgetName) {
-        String xpath = format(widgetControlXpath, widgetName, 1);
+        String xpath = format(WIDGET_CONTROL_XPATH, widgetName, 1);
         $(By.xpath(xpath)).click();
         return this;
     }
 
     public DashboardPage pressDeleteWidgetHeaderButton(String widgetName) {
-        String xpath = format(widgetControlXpath, widgetName, 3);
+        String xpath = format(WIDGET_CONTROL_XPATH, widgetName, 3);
         $(By.xpath(xpath)).click();
         return this;
     }
