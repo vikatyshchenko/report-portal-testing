@@ -10,8 +10,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class BaseTest {
 
     protected static final String DASHBOARD_NAME = "DEMO DASHBOARD";
-    BaseSteps baseSteps = new BaseSteps();
-    DashboardsSteps dashboardsSteps;
+    private final BaseSteps baseSteps = new BaseSteps();
+    protected DashboardsSteps dashboardsSteps;
 
     @BeforeTest
     public void login() {

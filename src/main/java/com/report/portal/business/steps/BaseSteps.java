@@ -8,7 +8,7 @@ import static com.report.portal.business.page.objects.BasePage.gotoDashboardsPag
 
 public class BaseSteps {
 
-    BasePage basePage = BasePage.initBase();
+    BasePage basePage = new BasePage();
 
     LoginPage loginPage;
 

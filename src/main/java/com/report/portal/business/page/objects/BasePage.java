@@ -7,10 +7,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class BasePage {
 
-    public static BasePage initBase() {
-        return new BasePage();
-    }
-
     public BasePage assertLogoVisible() {
         $(By.className("layout__corner-area--DwLCT")).shouldBe(Condition.visible);
         return this;

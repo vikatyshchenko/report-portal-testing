@@ -16,8 +16,8 @@ import static com.report.portal.core.utils.data.RandomSequenceCreator.generateRa
 
 public class AddNewWidgetTest {
 
-    BaseSteps baseSteps = new BaseSteps();
-    DashboardsSteps dashboardsSteps;
+    private final BaseSteps baseSteps = new BaseSteps();
+    private DashboardsSteps dashboardsSteps;
 
     protected static final String DASHBOARD_NAME = "DEMO DASHBOARD";
     protected static final String FILTER_NAME = "DEMO_FILTER";

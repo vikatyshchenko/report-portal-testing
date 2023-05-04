@@ -18,10 +18,6 @@ public class DashboardPage extends BasePage {
 
     private static final String WIDGET_DESC_TOOLTIP_XPATH = WIDGET_HEADER_XPATH.concat("/parent::div//div[@class='descriptionTooltipIcon__description-tooltip-icon--2N2NQ']");
 
-    public static DashboardPage init() {
-        return new DashboardPage();
-    }
-
     public DashboardPage addNewWidget() {
         $(By.xpath("//span[text() = 'Add new widget']")).click();
         return this;
