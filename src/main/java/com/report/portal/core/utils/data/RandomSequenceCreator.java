@@ -1,11 +1,12 @@
 package com.report.portal.core.utils.data;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import java.security.SecureRandom;
-import java.util.Random;
 
 public class RandomSequenceCreator {
 
-    private static final String CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_-+={}[]|;:<>,.?/";
+    private static final String CHARACTERS = "!@#$%^&*()_-+={}[]|;:<>,.?/";
 
     private RandomSequenceCreator() {
     }
@@ -15,14 +16,8 @@ public class RandomSequenceCreator {
     }
 
     public static String generateRandomString(int length) {
-        Random random = new SecureRandom();
-        StringBuilder sb = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
-            int randomIndex = random.nextInt(CHARACTERS.length());
-            char randomChar = CHARACTERS.charAt(randomIndex);
-            sb.append(randomChar);
-        }
-        return sb.toString();
+        String randomString = RandomStringUtils.random(length-CHARACTERS.length(), true, true);
+        return randomString.concat(CHARACTERS);
     }
 
 }
