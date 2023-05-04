@@ -19,8 +19,8 @@ public class AddNewWidgetTest {
     private final BaseSteps baseSteps = new BaseSteps();
     private DashboardsSteps dashboardsSteps;
 
-    protected static final String DASHBOARD_NAME = "DEMO DASHBOARD";
-    protected static final String FILTER_NAME = "DEMO_FILTER";
+    private static final String DASHBOARD_NAME = "DEMO DASHBOARD";
+    private static final String FILTER_NAME = "DEMO_FILTER";
 
     protected final int RANDOM_VALUE = generateRandomInt(1000, 9999);
 
