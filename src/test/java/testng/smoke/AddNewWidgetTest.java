@@ -35,7 +35,7 @@ public class AddNewWidgetTest {
     }
 
     @BeforeMethod
-    public void login() {
+    void login() {
         dashboardsSteps = baseSteps.login()
                 .isLogoVisible()
                 .goToDashboards()
@@ -43,7 +43,7 @@ public class AddNewWidgetTest {
     }
 
     @AfterMethod
-    public void close() {
+    void close() {
         closeWebDriver();
     }
 
