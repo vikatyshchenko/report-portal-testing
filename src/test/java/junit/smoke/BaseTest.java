@@ -17,7 +17,7 @@ public class BaseTest {
     protected static DashboardsSteps dashboardsSteps;
 
     @BeforeAll
-    public static void login() {
+    static void login() {
         dashboardsSteps = baseSteps.login()
                 .isLogoVisible()
                 .goToDashboards()
@@ -25,7 +25,7 @@ public class BaseTest {
     }
 
     @AfterAll
-    public static void close() {
+    static void close() {
         closeWebDriver();
     }
 

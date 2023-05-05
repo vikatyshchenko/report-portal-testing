@@ -8,8 +8,8 @@ import static com.report.portal.business.constants.StepLabel.*;
 
 public class DashboardsSteps {
 
-    private AllDashboardsPage allDashboardsPage = new AllDashboardsPage();
-    private DashboardPage dashboardPage = new DashboardPage();
+    private final AllDashboardsPage allDashboardsPage = new AllDashboardsPage();
+    private final DashboardPage dashboardPage = new DashboardPage();
 
     public static DashboardsSteps init() {
         return new DashboardsSteps();
