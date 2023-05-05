@@ -25,7 +25,7 @@ public class BaseSteps {
 
     public DashboardsSteps goToDashboards() {
         gotoDashboardsPage();
-        return DashboardsSteps.init();
+        return new DashboardsSteps();
     }
 
 }

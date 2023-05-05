@@ -11,10 +11,6 @@ public class DashboardsSteps {
     private final AllDashboardsPage allDashboardsPage = new AllDashboardsPage();
     private final DashboardPage dashboardPage = new DashboardPage();
 
-    public static DashboardsSteps init() {
-        return new DashboardsSteps();
-    }
-
     public static String createWidgetName(WidgetType widgetType, int randomValue) {
         return widgetType.getWidgetTitle().concat("_" + randomValue);
 
