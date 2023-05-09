@@ -11,13 +11,13 @@ public class DashboardsSteps {
     private final AllDashboardsPage allDashboardsPage = new AllDashboardsPage();
     private final DashboardPage dashboardPage = new DashboardPage();
 
-    public static String createWidgetName(WidgetType widgetType, int randomValue) {
-        return widgetType.getWidgetTitle().concat("_" + randomValue);
-
-    }
-
     public DashboardsSteps selectDashboard(String dashboardName) {
         allDashboardsPage.goToDashboard(dashboardName);
+        return this;
+    }
+
+    public DashboardsSteps assertDashboardVisible(String dashboardName) {
+        dashboardPage.isDashboardVisible(dashboardName);
         return this;
     }
 
@@ -41,10 +41,9 @@ public class DashboardsSteps {
         return this;
     }
 
-    public DashboardsSteps describeWidget(String widgetName) {
+    public DashboardsSteps typeWidgetName(String widgetName) {
         dashboardPage.isStepLabelActive(SAVE)
-                .typeWidgetName(widgetName)
-                .typeWidgetDescription("Description: " + widgetName);
+                .typeWidgetName(widgetName);
         return this;
     }
 
@@ -65,19 +64,24 @@ public class DashboardsSteps {
         return this;
     }
 
-    public DashboardsSteps editWidgetName(String oldWidgetName, String newWidgetName) {
-        dashboardPage.hoverWidgetHeader(oldWidgetName)
-                .pressEditWidgetHeaderButton(oldWidgetName)
-                .typeWidgetName(newWidgetName)
-                .pressSaveButton();
+    public DashboardsSteps pressEditWidgetButton(String widgetName) {
+        dashboardPage.hoverWidgetHeader(widgetName)
+                .pressEditWidgetHeaderButton(widgetName);
         return this;
     }
 
-    public DashboardsSteps editWidgetDescription(String widgetName, String widgetDescription) {
-        dashboardPage.hoverWidgetHeader(widgetName)
-                .pressEditWidgetHeaderButton(widgetName)
-                .typeWidgetDescription(widgetDescription)
-                .pressSaveButton();
+    public DashboardsSteps editWidgetName(String widgetName) {
+        dashboardPage.typeWidgetName(widgetName);
+        return this;
+    }
+
+    public DashboardsSteps editWidgetDescription(String widgetDescription) {
+        dashboardPage.typeWidgetDescription(widgetDescription);
+        return this;
+    }
+
+    public DashboardsSteps saveEdit() {
+        dashboardPage.pressSaveButton();
         return this;
     }
 
@@ -91,4 +95,5 @@ public class DashboardsSteps {
         dashboardPage.isWidgetDescriptionInVisible(widgetName);
         return this;
     }
+
 }

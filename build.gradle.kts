@@ -9,9 +9,8 @@ val rpJavaClientVersion = "5.1.17"
 val rpTestNGVersion = "5.1.4"
 val rpLog4jVersion = "5.1.6"
 val rpAllureVersion = "5.1.0"
-val jUnitVersion = "5.9.3"
-val jUnitEngineVersion = "5.0.0"
 val selenideVersion = "6.13.0"
+val cucumberVersion = "7.12.0"
 
 plugins {
     id("java")
@@ -62,15 +61,13 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-core:$log4jVersion")
     testImplementation("org.slf4j:slf4j-log4j12:$slf4jVersion")
     testImplementation("org.slf4j:slf4j-simple:$slf4jVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:$jUnitVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:$jUnitEngineVersion")
-    implementation ("com.codeborne:selenide:$selenideVersion")
+    implementation("com.codeborne:selenide:$selenideVersion")
     implementation("io.qameta.allure:allure-testng:${allure.version}")
     implementation("com.epam.reportportal:client-java:$rpJavaClientVersion")
     implementation("com.epam.reportportal:agent-java-testng:$rpTestNGVersion")
     implementation("com.epam.reportportal:logger-java-log4j:$rpLog4jVersion")
-    testImplementation("org.testng:testng:7.7.0")
+    implementation("io.cucumber:cucumber-java:$cucumberVersion")
+    implementation("io.cucumber:cucumber-testng:$cucumberVersion")
     runtimeOnly("com.epam.reportportal:allure-common:$rpAllureVersion")
 }
 
@@ -85,7 +82,6 @@ tasks.test {
     val testResults = mutableListOf<String>()
 
     useTestNG()
-    useJUnitPlatform()
 
     testLogging {
         events("PASSED", "FAILED", "SKIPPED", "STANDARD_ERROR")
