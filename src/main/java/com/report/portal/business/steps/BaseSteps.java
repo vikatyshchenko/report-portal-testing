@@ -11,8 +11,10 @@ public class BaseSteps {
     private final BasePage basePage = new BasePage();
     private LoginPage loginPage;
 
+    private static final String INIT_URL = "http://localhost:8080/ui/#login";
+
     public BaseSteps openInitialPage() {
-        loginPage = Selenide.open("http://localhost:8080/ui/#login", LoginPage.class);
+        loginPage = Selenide.open(INIT_URL, LoginPage.class);
         return this;
     }
 

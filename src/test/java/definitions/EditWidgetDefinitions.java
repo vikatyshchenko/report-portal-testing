@@ -53,10 +53,8 @@ public class EditWidgetDefinitions {
         dashboardsSteps.assertWidgetVisible(widgetName, widgetType);
     }
 
-    @And("can be changed to default name")
-    public void canBeChangedToDefaultName(DataTable dataTable) {
-        Map<String, String> widgetInfo = dataTable.asMap(String.class, String.class);
-        String name = widgetInfo.get("name");
+    @And("can be changed to default name {string}")
+    public void canBeChangedToDefaultName(String name) {
         dashboardsSteps.pressEditWidgetButton(widgetName)
                 .editWidgetName(name)
                 .saveEdit();

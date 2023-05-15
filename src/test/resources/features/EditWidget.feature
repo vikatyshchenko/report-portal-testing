@@ -15,8 +15,7 @@ Feature: Edit widget
       When User presses Edit Widget button
       And enters new name "<widgetName>"
       Then widget name is changed to new name
-      And can be changed to default name
-        | name | LAUNCH STATISTICS AREA |
+      And can be changed to default name "LAUNCH STATISTICS AREA"
 
       Examples:
         | widgetName             |
