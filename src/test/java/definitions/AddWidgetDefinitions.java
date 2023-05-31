@@ -1,10 +1,8 @@
 package definitions;
 
 import com.report.portal.business.constants.WidgetType;
-import com.report.portal.business.steps.DashboardsSteps;
+import com.report.portal.business.steps.DashboardsService;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.Getter;
@@ -18,7 +16,7 @@ import static com.report.portal.core.utils.data.RandomSequenceCreator.generateRa
 @Setter
 public class AddWidgetDefinitions {
 
-    private DashboardsSteps dashboardsSteps = new DashboardsSteps();
+    private DashboardsService dashboardsService = new DashboardsService();
     private static final String DASHBOARD_NAME = "DEMO DASHBOARD";
     private static final String FILTER_NAME = "DEMO_FILTER";
 
@@ -27,22 +25,22 @@ public class AddWidgetDefinitions {
 
     protected final int RANDOM_VALUE = generateRandomInt(1000, 9999);
 
-    @Given("User is on a Dashboard Page")
-    public void userIsOnADashboardPage() {
-        dashboardsSteps.assertDashboardVisible(DASHBOARD_NAME);
+    @Then("I am on a Dashboard Page")
+    public void isOnDashboardPage() {
+        dashboardsService.assertDashboardVisible(DASHBOARD_NAME);
     }
 
-    @And("User have chosen a Dashboard")
-    public void userHaveChosenADashboard() {
-        dashboardsSteps.selectDashboard(DASHBOARD_NAME);
+    @When("I choose a Dashboard")
+    public void choseADashboard() {
+        dashboardsService.selectDashboard(DASHBOARD_NAME);
     }
 
-    @When("User creates new Widget")
-    public void userCreatesNewWidgetWithTypeAndName(DataTable dataTable) {
+    @When("I create new Widget")
+    public void createNewWidgetWithTypeAndName(DataTable dataTable) {
         Map<String, String> widgetInfo = dataTable.asMap(String.class, String.class);
         WidgetType widget = Enum.valueOf(WidgetType.class, widgetInfo.get("type"));
         String widgetName = widgetInfo.get("name").concat(" " + RANDOM_VALUE);
-        dashboardsSteps.addNewWidget()
+        dashboardsService.addNewWidget()
                 .chooseWidgetType(widget)
                 .configureWidget(FILTER_NAME, widget)
                 .typeWidgetName(widgetName)
@@ -53,12 +51,12 @@ public class AddWidgetDefinitions {
 
     @Then("New widget is created and visible on a Dashboard Page")
     public void newWidgetIsCreatedAndVisibleOnADashboardPage() {
-        dashboardsSteps.assertWidgetVisible(getWidgetName(), getWidgetType());
+        dashboardsService.assertWidgetVisible(getWidgetName(), getWidgetType());
     }
 
-    @And("Widget can be deleted")
-    public void widgetCanBeDeleted() {
-        dashboardsSteps.deleteWidget(getWidgetName());
+    @Then("I delete widget")
+    public void deleteWidget() {
+        dashboardsService.deleteWidget(getWidgetName());
     }
 
 }

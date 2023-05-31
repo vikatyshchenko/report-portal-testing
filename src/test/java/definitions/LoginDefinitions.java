@@ -1,33 +1,32 @@
 package definitions;
 
-import com.report.portal.business.steps.BaseSteps;
-import io.cucumber.java.en.And;
+import com.report.portal.business.steps.BaseService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginDefinitions {
 
-    private final BaseSteps baseSteps = new BaseSteps();
+    private final BaseService baseService = new BaseService();
 
     @Given("Login page is open")
     public void loginPageIsOpen() {
-        baseSteps.openInitialPage();
+        baseService.openInitialPage();
     }
 
     @When("User enters valid credentials")
     public void userEntersValidCredentials() {
-        baseSteps.login();
+        baseService.login();
     }
 
     @Then("User is signed in")
     public void userIsSignedIn() {
-        baseSteps.isLogoVisible();
+        baseService.isLogoVisible();
     }
 
-    @And("User can navigate to the Dashboards Page")
+    @Given("I navigate to the Dashboards Page")
     public void userCanNavigateToTheDashboardsPage() {
-        baseSteps.goToDashboards();
+        baseService.goToDashboards();
     }
 
 }

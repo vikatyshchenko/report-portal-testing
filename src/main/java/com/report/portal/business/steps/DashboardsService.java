@@ -6,34 +6,34 @@ import com.report.portal.business.page.objects.DashboardPage;
 
 import static com.report.portal.business.constants.StepLabel.*;
 
-public class DashboardsSteps {
+public class DashboardsService {
 
     private final AllDashboardsPage allDashboardsPage = new AllDashboardsPage();
     private final DashboardPage dashboardPage = new DashboardPage();
 
-    public DashboardsSteps selectDashboard(String dashboardName) {
+    public DashboardsService selectDashboard(String dashboardName) {
         allDashboardsPage.goToDashboard(dashboardName);
         return this;
     }
 
-    public DashboardsSteps assertDashboardVisible(String dashboardName) {
+    public DashboardsService assertDashboardVisible(String dashboardName) {
         dashboardPage.isDashboardVisible(dashboardName);
         return this;
     }
 
-    public DashboardsSteps addNewWidget() {
+    public DashboardsService addNewWidget() {
         dashboardPage.addNewWidget();
         return this;
     }
 
-    public DashboardsSteps chooseWidgetType(WidgetType widgetType) {
+    public DashboardsService chooseWidgetType(WidgetType widgetType) {
         dashboardPage.isStepLabelActive(SELECT)
                 .selectWidgetType(widgetType)
                 .pressNextButton();
         return this;
     }
 
-    public DashboardsSteps configureWidget(String filterName, WidgetType widgetType) {
+    public DashboardsService configureWidget(String filterName, WidgetType widgetType) {
         dashboardPage.isStepLabelActive(CONFIGURE)
                 .selectFilter(filterName)
                 .isPreviewVisible(widgetType)
@@ -41,57 +41,57 @@ public class DashboardsSteps {
         return this;
     }
 
-    public DashboardsSteps typeWidgetName(String widgetName) {
+    public DashboardsService typeWidgetName(String widgetName) {
         dashboardPage.isStepLabelActive(SAVE)
                 .typeWidgetName(widgetName);
         return this;
     }
 
-    public DashboardsSteps createWidget() {
+    public DashboardsService createWidget() {
         dashboardPage.pressAddButton();
         return this;
     }
 
-    public DashboardsSteps assertWidgetVisible(String widgetName, WidgetType widgetType) {
+    public DashboardsService assertWidgetVisible(String widgetName, WidgetType widgetType) {
         dashboardPage.isWidgetVisible(widgetName, widgetType);
         return this;
     }
 
-    public DashboardsSteps deleteWidget(String widgetName) {
+    public DashboardsService deleteWidget(String widgetName) {
         dashboardPage.hoverWidgetHeader(widgetName)
                 .pressDeleteWidgetHeaderButton(widgetName)
                 .pressDeleteWidgetButton();
         return this;
     }
 
-    public DashboardsSteps pressEditWidgetButton(String widgetName) {
+    public DashboardsService pressEditWidgetButton(String widgetName) {
         dashboardPage.hoverWidgetHeader(widgetName)
                 .pressEditWidgetHeaderButton(widgetName);
         return this;
     }
 
-    public DashboardsSteps editWidgetName(String widgetName) {
+    public DashboardsService editWidgetName(String widgetName) {
         dashboardPage.typeWidgetName(widgetName);
         return this;
     }
 
-    public DashboardsSteps editWidgetDescription(String widgetDescription) {
+    public DashboardsService editWidgetDescription(String widgetDescription) {
         dashboardPage.typeWidgetDescription(widgetDescription);
         return this;
     }
 
-    public DashboardsSteps saveEdit() {
+    public DashboardsService saveEdit() {
         dashboardPage.pressSaveButton();
         return this;
     }
 
-    public DashboardsSteps assertWidgetDescriptionVisible(String widgetName, String widgetDescription) {
+    public DashboardsService assertWidgetDescriptionVisible(String widgetName, String widgetDescription) {
         dashboardPage.hoverWidgetDescription(widgetName)
                 .isWidgetDescriptionVisible(widgetName, widgetDescription);
         return this;
     }
 
-    public DashboardsSteps assertWidgetDescriptionInVisible(String widgetName) {
+    public DashboardsService assertWidgetDescriptionInVisible(String widgetName) {
         dashboardPage.isWidgetDescriptionInVisible(widgetName);
         return this;
     }

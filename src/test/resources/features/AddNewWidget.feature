@@ -1,16 +1,16 @@
 Feature:  Add new widget
 
   Background: User Navigates to the Dashboards Page
-    Given User can navigate to the Dashboards Page
-    And User have chosen a Dashboard
+    Given I navigate to the Dashboards Page
+    When I choose a Dashboard
+    Then I am on a Dashboard Page
 
   Scenario Outline: User can add new widget
-    Given User is on a Dashboard Page
-    When User creates new Widget
+    When I create new Widget
       | type | <widgetType> |
       | name | <widgetName> |
     Then New widget is created and visible on a Dashboard Page
-    And Widget can be deleted
+    And I delete widget
 
     Examples:
       | widgetType        | widgetName         |
