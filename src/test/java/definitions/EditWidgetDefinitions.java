@@ -3,7 +3,6 @@ package definitions;
 import com.report.portal.business.constants.WidgetType;
 import com.report.portal.business.service.DashboardsService;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.But;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.Getter;
@@ -86,7 +85,7 @@ public class EditWidgetDefinitions {
         setWidgetDescription("");
     }
 
-    @But("Widget description is not visible")
+    @Then("Widget description is not visible")
     public void widgetDescriptionIsNotVisible() {
         dashboardsService.assertWidgetDescriptionInVisible(widgetName);
     }
