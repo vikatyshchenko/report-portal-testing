@@ -1,4 +1,4 @@
-package com.report.portal.business.steps;
+package com.report.portal.business.service;
 
 import com.codeborne.selenide.Selenide;
 import com.report.portal.business.page.objects.BasePage;

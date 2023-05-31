@@ -1,6 +1,6 @@
 package definitions;
 
-import com.report.portal.business.steps.BaseService;
+import com.report.portal.business.service.BaseService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

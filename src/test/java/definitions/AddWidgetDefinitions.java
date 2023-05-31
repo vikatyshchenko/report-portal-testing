@@ -1,7 +1,7 @@
 package definitions;
 
 import com.report.portal.business.constants.WidgetType;
-import com.report.portal.business.steps.DashboardsService;
+import com.report.portal.business.service.DashboardsService;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
