@@ -1,27 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Amazon Tests" parallel="tests">
+<suite name="Amazon Tests" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
     </listeners>
 
-    <!--The tests are structured for methods to be executed in parallel, but data provider to be executed consequently-->
-    <test name="editWidgetNameTest">
+    <test name="Cucumber test">
         <classes>
-            <class name="testng.smoke.EditWidgetTest">
-                <methods>
-                    <include name="editWidgetNameTest"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-    <test name="editWidgetDescriptionTest">
-        <classes>
-            <class name="testng.smoke.EditWidgetTest">
-                <methods>
-                    <include name="editWidgetDescriptionTest"/>
-                </methods>
+            <class name="testng.smoke.CucumberTestRunner">
             </class>
         </classes>
     </test>
